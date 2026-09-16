@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TVM Financial Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">BS3210 • Finance for Engineers, Designers and Professionals</p>
+      <h1>TVM Financial Calculator</h1>
+      <p class="subtitle">Time Value of Money tools for practical financial decision-making</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" aria-label="Calculator navigation">
+      <button class="tab active" data-target="fv">Future Value</button>
+      <button class="tab" data-target="pv">Present Value</button>
+      <button class="tab" data-target="si">Simple Interest</button>
+      <button class="tab" data-target="ci">Compound Interest</button>
+      <button class="tab" data-target="emi">EMI Calculator</button>
+      <button class="tab" data-target="amortization">Amortization</button>
+      <button class="tab" data-target="scenario">Scenario Analysis</button>
+    </nav>
+
+    <section id="fv" class="panel active">
+      <div class="panel-heading"><h2>Future Value Calculator</h2><p>Calculate the value of an investment after a given period.</p></div>
+      <div class="form-grid">
+        <label>Principal Amount (₹)<input id="fvP" type="number" min="0" step="0.01" placeholder="e.g. 100000"></label>
+        <label>Annual Interest Rate (%)<input id="fvR" type="number" min="0" step="0.01" placeholder="e.g. 10"></label>
+        <label>Time Period (Years)<input id="fvT" type="number" min="0" step="0.1" placeholder="e.g. 5"></label>
+      </div>
+      <button class="primary" onclick="calculateFV()">Calculate Future Value</button>
+      <div id="fvResult" class="result hidden"></div>
+    </section>
+
+    <section id="pv" class="panel">
+      <div class="panel-heading"><h2>Present Value Calculator</h2><p>Find today's value of a future amount.</p></div>
+      <div class="form-grid">
+        <label>Future Value (₹)<input id="pvFV" type="number" min="0" step="0.01" placeholder="e.g. 161051"></label>
+        <label>Discount Rate (%)<input id="pvR" type="number" min="0" step="0.01" placeholder="e.g. 10"></label>
+        <label>Time Period (Years)<input id="pvT" type="number" min="0" step="0.1" placeholder="e.g. 5"></label>
+      </div>
+      <button class="primary" onclick="calculatePV()">Calculate Present Value</button>
+      <div id="pvResult" class="result hidden"></div>
+    </section>
+
+    <section id="si" class="panel">
+      <div class="panel-heading"><h2>Simple Interest Calculator</h2><p>Calculate interest and maturity value using simple interest.</p></div>
+      <div class="form-grid">
+        <label>Principal (₹)<input id="siP" type="number" min="0" step="0.01" placeholder="e.g. 100000"></label>
+        <label>Interest Rate (%)<input id="siR" type="number" min="0" step="0.01" placeholder="e.g. 8"></label>
+        <label>Time (Years)<input id="siT" type="number" min="0" step="0.1" placeholder="e.g. 3"></label>
+      </div>
+      <button class="primary" onclick="calculateSI()">Calculate Simple Interest</button>
+      <div id="siResult" class="result hidden"></div>
+    </section>
+
+    <section id="ci" class="panel">
+      <div class="panel-heading"><h2>Compound Interest Calculator</h2><p>Calculate compound interest with different compounding frequencies.</p></div>
+      <div class="form-grid">
+        <label>Principal (₹)<input id="ciP" type="number" min="0" step="0.01" placeholder="e.g. 100000"></label>
+        <label>Rate (%)<input id="ciR" type="number" min="0" step="0.01" placeholder="e.g. 10"></label>
+        <label>Time (Years)<input id="ciT" type="number" min="0" step="0.1" placeholder="e.g. 5"></label>
+        <label>Compounding Frequency
+          <select id="ciM">
+            <option value="1">Annually</option>
+            <option value="2">Half-yearly</option>
+            <option value="4">Quarterly</option>
+            <option value="12" selected>Monthly</option>
+            <option value="365">Daily</option>
+          </select>
+        </label>
+      </div>
+      <button class="primary" onclick="calculateCI()">Calculate Compound Interest</button>
+      <div id="ciResult" class="result hidden"></div>
+    </section>
+
+    <section id="emi" class="panel">
+      <div class="panel-heading"><h2>EMI Calculator</h2><p>Estimate monthly loan repayment, total payment and interest.</p></div>
+      <div class="form-grid">
+        <label>Loan Amount (₹)<input id="emiP" type="number" min="0" step="0.01" placeholder="e.g. 500000"></label>
+        <label>Annual Interest Rate (%)<input id="emiR" type="number" min="0" step="0.01" placeholder="e.g. 10"></label>
+        <label>Loan Tenure (Years)<input id="emiT" type="number" min="0" step="0.1" placeholder="e.g. 5"></label>
+      </div>
+      <button class="primary" onclick="calculateEMI()">Calculate EMI</button>
+      <div id="emiResult" class="result hidden"></div>
+    </section>
+
+    <section id="amortization" class="panel">
+      <div class="panel-heading"><h2>Loan Amortization Schedule</h2><p>View monthly opening balance, interest, principal, EMI and closing balance.</p></div>
+      <div class="form-grid">
+        <label>Loan Amount (₹)<input id="amP" type="number" min="0" step="0.01" placeholder="e.g. 500000"></label>
+        <label>Annual Interest Rate (%)<input id="amR" type="number" min="0" step="0.01" placeholder="e.g. 10"></label>
+        <label>Tenure (Years)<input id="amT" type="number" min="0" step="0.1" placeholder="e.g. 5"></label>
+      </div>
+      <button class="primary" onclick="calculateAmortization()">Generate Schedule</button>
+      <div id="amortSummary" class="result hidden"></div>
+      <div id="tableWrap" class="table-wrap hidden">
+        <table>
+          <thead><tr><th>Month</th><th>Opening Balance</th><th>Interest</th><th>Principal Repaid</th><th>EMI</th><th>Closing Balance</th></tr></thead>
+          <tbody id="amortBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="scenario" class="panel">
+      <div class="panel-heading"><h2>Scenario Analysis</h2><p>Compare future values under four required interest-rate scenarios.</p></div>
+      <div class="form-grid">
+        <label>Principal Amount (₹)<input id="scP" type="number" min="0" step="0.01" placeholder="e.g. 100000"></label>
+        <label>Time Period (Years)<input id="scT" type="number" min="0" step="0.1" placeholder="e.g. 5"></label>
+      </div>
+      <button class="primary" onclick="calculateScenario()">Compare Scenarios</button>
+      <div id="scenarioResult" class="hidden"></div>
+    </section>
+
+    <footer>
+      <p><strong>MIT Vishwaprayag University, Solapur</strong> • School of Business • BS3210</p>
+      <p>TVM Calculator • Assignment 1</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
