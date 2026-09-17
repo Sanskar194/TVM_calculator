@@ -2,7 +2,7 @@
 
 ## Time Value of Money (TVM) Calculator Application
 
-A web-based financial calculator application developed as part of **Assignment 1** for the course **BS3210: Finance for Engineers, Designers and Professionals** at **MIT Vishwaprayag University, Solapur**.
+A web-based financial calculator application developed as part of **Assignment 1** for the course **BS3210: Finance for Engineers**
 
 The application performs various Time Value of Money calculations and helps users understand the impact of interest rates, investment periods, and loan repayment terms on financial outcomes.
 
