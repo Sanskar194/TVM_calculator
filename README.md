@@ -10,10 +10,10 @@ The application performs various Time Value of Money calculations and helps user
 
 ## Student Details
 
-**Name:** Sanskar  
-**Roll No.:** YOUR_ROLL_NO  
-**Department:** B.Tech CSE - Artificial Intelligence and Machine Learning (AIML)  
-**University:** MIT Vishwaprayag University, Solapur  
+**Name:** Sanskar Sutar
+**Roll No.:** SCFU424009
+**Department:** B.Tech AIML  
+**MIT Vishwaprayag University, Solapur**
 
 **Course:** BS3210 - Finance for Engineers, Designers and Professionals  
 **Assignment:** Assignment 1 - Development of a Time Value of Money (TVM) Calculator Application
