@@ -16,7 +16,7 @@ The application performs various Time Value of Money calculations and helps user
 **MIT Vishwaprayag University, Solapur**
 
 **Course:** BS3210 Finance for Engineers.  
-**Assignment 1:**Development of a Time Value of Money (TVM) Calculator Application
+**Assignment 1:** Development of a Time Value of Money (TVM) Calculator Application
 
 ---
 
